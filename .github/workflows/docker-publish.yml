@@ -8,7 +8,7 @@ on:
 jobs:
   push:
     name: Push
-    runs-on: ubuntu-20.04
+    runs-on: windows
 
     strategy:
       fail-fast: false
@@ -52,28 +52,12 @@ jobs:
       - name: Code Checkout
         uses: actions/checkout@v3
 
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v2
-        if: ${{ matrix.image.platforms != 'linux/amd64' }}
-
-      - name: Install buildx
-        uses: docker/setup-buildx-action@v2
-        with:
-          buildkitd-flags: --debug
-
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v2
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.CR_PAT }}
-
-      - name: Login to Quay
-        uses: docker/login-action@v2
-        with:
-          registry: quay.io
-          username: matthewp
-          password: ${{ secrets.QUAY_SECRET }}
 
       - name: Build and Push
         uses: docker/build-push-action@v3
@@ -83,5 +67,4 @@ jobs:
           platforms: ${{ matrix.image.platforms }}
           push: true
           tags: |
-            ghcr.io/matthewpi/images:${{ matrix.image.PREFIX }}${{ matrix.image.image }}${{ matrix.image.SUFFIX }}
-            quay.io/matthewp/pterodactyl:${{ matrix.image.PREFIX }}${{ matrix.image.image }}${{ matrix.image.SUFFIX }}
+            ghcr.io/Bladestar2105/pterodactyl-images:${{ matrix.image.PREFIX }}${{ matrix.image.image }}${{ matrix.image.SUFFIX }}
