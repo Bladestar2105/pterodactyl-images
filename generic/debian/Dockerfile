@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2023 Matthew Penner
+# Copyright (c) 2023 Bladestar2105
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -22,12 +22,12 @@
 
 FROM		--platform=$TARGETOS/$TARGETARCH docker.io/library/debian:stable-slim
 
-LABEL		author="Matthew Penner" maintainer="matthew@pterodactyl.io"
+LABEL		author="Bladestar2105" maintainer="stelios@sakalis.eu"
 
-LABEL		org.opencontainers.image.source="https://github.com/matthewpi/images"
+LABEL		org.opencontainers.image.source="https://github.com/Bladestar2105/pterodactyl-images"
 LABEL		org.opencontainers.image.licenses=MIT
 
-RUN			apt-get update -y && apt-get upgrade -y && apt-get install -y ca-certificates iproute2 tzdata \
+RUN			apt-get update -y && apt-get upgrade -y && apt-get install -y unzip wget build-essential doxygen graphviz libspatialindex-dev postgresql-server-dev-all libirrlicht-dev cmake libbz2-dev libjpeg-dev libxxf86vm-dev libsqlite3-dev libopenal-dev libcurl4-gnutls-dev libfreetype6-dev zlib1g-dev libgmp-dev libjsoncpp-dev luajit libncurses5-dev libzstd-dev ca-certificates iproute2 tzdata \
 				&& adduser -D -h /home/container container
 
 USER		container
