@@ -27,7 +27,7 @@ LABEL		author="Bladestar2105" maintainer="stelios@sakalis.eu"
 LABEL		org.opencontainers.image.source="https://github.com/Bladestar2105/pterodactyl-images"
 LABEL		org.opencontainers.image.licenses=MIT
 
-RUN			apt-get update -y && apt-get upgrade -y && apt-get install -y unzip wget build-essential doxygen graphviz libspatialindex-dev postgresql-server-dev-all libirrlicht-dev cmake libbz2-dev libjpeg-dev libxxf86vm-dev libsqlite3-dev libopenal-dev libcurl4-gnutls-dev libfreetype6-dev zlib1g-dev libgmp-dev libjsoncpp-dev luajit libncurses5-dev libzstd-dev ca-certificates iproute2 tzdata \
+RUN			apt-get update -y && apt-get upgrade -y && apt-get install -y unzip wget build-essential doxygen graphviz libspatialindex-dev postgresql-server-dev-all libirrlicht-dev cmake libbz2-dev libjpeg-dev libxxf86vm-dev libsqlite3-dev libopenal-dev libcurl4-gnutls-dev libfreetype6-dev zlib1g-dev libgmp-dev libjsoncpp-dev luajit libluajit-5.1-dev libncurses5-dev libzstd-dev ca-certificates iproute2 tzdata \
 				&& adduser -D -h /home/container container
 
 USER		container
